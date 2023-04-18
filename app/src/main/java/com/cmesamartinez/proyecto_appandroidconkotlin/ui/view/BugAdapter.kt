@@ -7,7 +7,7 @@ import com.cmesamartinez.proyecto_appandroidconkotlin.R
 import com.cmesamartinez.proyecto_appandroidconkotlin.data.model.BugsModel
 
 class BugAdapter(var BugList:List<BugsModel> = emptyList()):RecyclerView.Adapter<BugViewHolder>() {
-    fun upadteList(BugList:List<BugsModel>){
+    fun updateList(BugList:List<BugsModel>){
         this.BugList=BugList
         notifyDataSetChanged()
     }
