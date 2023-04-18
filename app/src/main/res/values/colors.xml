@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- appAndroidConKotlin COLORS-->
+    <color name="shadow_card">#73EDEEC0</color>
+    <color name="app_item_text">#433E0E</color>
+    <color name="background_app">#7C9082</color>
+    <color name="card_background">#8DAA91</color>
+    <color name="bug_detail_text_pt1">#A7A284</color>
+    <color name="bug_detail_text_pt2">#D0C88E</color>
+    <color name="bug_detail_text_pt3">#788475</color>
+
+</resources>

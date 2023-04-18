@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="350dp"
+    android:layout_height="150dp"
+    android:layout_margin="16dp"
+    app:cardBackgroundColor="@color/card_background"
+    app:cardCornerRadius="16dp">
+
+    <ImageView
+        android:id="@+id/imageBug"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop">
+    </ImageView>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvNameBug"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/shadow_card"
+            android:textAlignment="center"
+            android:textStyle="italic"
+            android:textAllCaps="true"
+            android:textColor="@color/app_item_text"
+
+            tools:text="Prueba">
+        </TextView>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+</androidx.cardview.widget.CardView>
