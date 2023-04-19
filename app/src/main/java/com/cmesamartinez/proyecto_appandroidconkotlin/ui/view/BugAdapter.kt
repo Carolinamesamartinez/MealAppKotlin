@@ -5,9 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.cmesamartinez.proyecto_appandroidconkotlin.R
 import com.cmesamartinez.proyecto_appandroidconkotlin.data.model.BugsModel
+import com.cmesamartinez.proyecto_appandroidconkotlin.data.model.BugsResponse
 
-class BugAdapter(var BugList:List<BugsModel> = emptyList()):RecyclerView.Adapter<BugViewHolder>() {
-    fun updateList(BugList:List<BugsModel>){
+class BugAdapter(var BugList:List<BugsResponse> = emptyList()):RecyclerView.Adapter<BugViewHolder>() {
+    fun updateList(BugList: List<BugsResponse>){
         this.BugList=BugList
         notifyDataSetChanged()
     }
