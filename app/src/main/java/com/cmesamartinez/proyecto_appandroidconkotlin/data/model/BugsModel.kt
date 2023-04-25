@@ -2,17 +2,29 @@ package com.cmesamartinez.proyecto_appandroidconkotlin.data.model
 
 import com.google.gson.annotations.SerializedName
 
-data class BugsModel (
-    val Bugs:List<BugsResponse>
+data class SuperHeroeDataResponse(
+    @SerializedName("response") val response: String,
+    @SerializedName("results") val superheroes:List<SuperHeroItemResponse>)
 
-        )
-
-data class nameEuResult(
-    @SerializedName("name-EUen") val Realname:String
+data class SuperHeroItemResponse(
+    @SerializedName("id") val superheroid:String,
+    @SerializedName("name") val name:String,
+    @SerializedName("image") val superheroimage:SuperHeroImageResponse,
+)
+data class SuperHeroImageResponse(
+    @SerializedName("url") val url:String,
 )
 
-data class BugsResponse(
-    @SerializedName("id") val bugsid:String,
-    @SerializedName("name") val nameEU:nameEuResult,
-    @SerializedName("image_uri") val bugsImage:String
+
+data class MealDataResponse(
+    @SerializedName("meals") val meals:List<MealsItemResponse>
 )
+
+data class MealsItemResponse(
+    @SerializedName("idMeal") val mealid:String,
+    @SerializedName("strMeal") val name:String,
+    @SerializedName("strCategory") val category:String,
+    @SerializedName("strArea") val area:String,
+    @SerializedName("strMealThumb") val mealImage:String
+)
+

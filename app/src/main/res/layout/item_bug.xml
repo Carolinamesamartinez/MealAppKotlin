@@ -6,30 +6,77 @@
     android:layout_height="150dp"
     android:layout_margin="16dp"
     app:cardBackgroundColor="@color/card_background"
-    app:cardCornerRadius="16dp">
+    app:cardCornerRadius="20dp">
 
-    <ImageView
-        android:id="@+id/imageBug"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop">
-    </ImageView>
+
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        app:cardBackgroundColor="@color/shadow_card"
+        app:cardCornerRadius="20dp">
+        <ImageView
+            android:id="@+id/imageBug"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop">
+        </ImageView>
+
+    </androidx.cardview.widget.CardView>
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:gravity="center"
         android:layout_height="match_parent"
+        android:gravity="center"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/tvNameBug"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="85dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="11dp"
             android:background="@color/shadow_card"
-            android:textAlignment="center"
-            android:textStyle="italic"
             android:textAllCaps="true"
             android:textColor="@color/app_item_text"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:text="Prueba">
+        </TextView>
+
+        <TextView
+            android:id="@+id/tvCategoryMeal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="85dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="11dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/shadow_card"
+            android:textAllCaps="true"
+            android:textColor="@color/app_item_text"
+            android:textSize="16sp"
+            android:textStyle="italic"
+
+            tools:text="Prueba">
+        </TextView>
+
+        <TextView
+            android:id="@+id/tvArea"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="85dp"
+            android:layout_marginEnd="11dp"
+            android:layout_marginBottom="20dp"
+            android:background="@color/shadow_card"
+            android:textAllCaps="true"
+            android:textColor="@color/app_item_text"
+            android:textSize="16sp"
+            android:textStyle="italic"
 
             tools:text="Prueba">
         </TextView>
