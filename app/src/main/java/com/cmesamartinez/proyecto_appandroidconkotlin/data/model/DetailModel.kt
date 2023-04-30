@@ -1,18 +1,12 @@
 package com.cmesamartinez.proyecto_appandroidconkotlin.data.model
 
 import com.google.gson.annotations.SerializedName
-/**
-data class SuperHeroDetailResponse(@SerializedName("name") val name:String
-                                   ,@SerializedName("image") val image:SuperHeroImageDetailResponse
-                                   ,@SerializedName("biography") val biography: Biography
-                                   ,@SerializedName("appearance") val appearance: appearance
 
-)
-**/
 data class MealDetailResponse(@SerializedName("meals") val meals:List<MealItemDetailResponse>)
 
 
-data class MealItemDetailResponse(@SerializedName("strMeal") val name:String
+data class MealItemDetailResponse(  @SerializedName("idMeal") val mealid:String,
+                                    @SerializedName("strMeal") val name:String
                                    ,@SerializedName("strMealThumb") val image:String
                                    ,@SerializedName("strCategory") val category: String
                                    ,@SerializedName("strArea") val area: String
@@ -30,20 +24,7 @@ data class MealItemDetailResponse(@SerializedName("strMeal") val name:String
 
 )
 
-data class SuperHeroImageDetailResponse(@SerializedName("url") val url:String)
 
-data class Biography(@SerializedName("full-name") val fullName:String,
-                     @SerializedName("place-of-birth") val placeofbirth:String,
-                     @SerializedName("aliases") val aliases:List<String>,
-                     @SerializedName("publisher") val publisher:String
-
-)
-data class appearance(
-@SerializedName("gender") val gender:String,
-@SerializedName("race") val race:String,
-@SerializedName("eye-color") val eyecolor:String,
-@SerializedName("hair-color") val haircolor:String
-)
 
 
 

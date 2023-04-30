@@ -19,7 +19,7 @@
         app:cardBackgroundColor="@color/shadow_card"
         app:cardCornerRadius="20dp">
         <ImageView
-            android:id="@+id/imageBug"
+            android:id="@+id/imageMeal"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop">
@@ -34,7 +34,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tvNameBug"
+            android:id="@+id/tvNameMeal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="85dp"
@@ -45,8 +45,7 @@
             android:textColor="@color/app_item_text"
             android:textSize="16sp"
             android:textStyle="bold"
-            tools:text="Prueba">
-        </TextView>
+            tools:text="Prueba"></TextView>
 
         <TextView
             android:id="@+id/tvCategoryMeal"
@@ -62,8 +61,7 @@
             android:textSize="16sp"
             android:textStyle="italic"
 
-            tools:text="Prueba">
-        </TextView>
+            tools:text="Prueba"></TextView>
 
         <TextView
             android:id="@+id/tvArea"
@@ -78,8 +76,8 @@
             android:textSize="16sp"
             android:textStyle="italic"
 
-            tools:text="Prueba">
-        </TextView>
+            tools:text="Prueba"></TextView>
+
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 

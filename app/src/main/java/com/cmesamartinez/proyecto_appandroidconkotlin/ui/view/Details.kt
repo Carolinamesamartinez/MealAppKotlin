@@ -2,12 +2,9 @@ package com.cmesamartinez.proyecto_appandroidconkotlin.ui.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.cmesamartinez.proyecto_appandroidconkotlin.R
 import com.cmesamartinez.proyecto_appandroidconkotlin.data.model.MealDetailResponse
-import com.cmesamartinez.proyecto_appandroidconkotlin.data.model.MealItemDetailResponse
-import com.cmesamartinez.proyecto_appandroidconkotlin.data.network.BugsApiService
+import com.cmesamartinez.proyecto_appandroidconkotlin.data.network.MealsApiService
 import com.cmesamartinez.proyecto_appandroidconkotlin.databinding.ActivityDetailsBinding
-import com.cmesamartinez.proyecto_appandroidconkotlin.di.NetworkModule
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -18,8 +15,9 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class Details : AppCompatActivity() {
+class Details : AppCompatActivity () {
     private lateinit var binding: ActivityDetailsBinding
+    private lateinit var malapi:MealsApiService
     companion object{
         const val EXTRA_ID="extra_id"
     }
@@ -27,7 +25,7 @@ class Details : AppCompatActivity() {
         binding= ActivityDetailsBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         val id:String=intent.getStringExtra(EXTRA_ID).orEmpty()
-        getSuperHeroeInformation(id)
+        getMealInformation(id)
         setContentView(binding.root)
     }
 
@@ -41,11 +39,12 @@ class Details : AppCompatActivity() {
             .build()
     }
 
-    private fun getSuperHeroeInformation(id: String) {
-        CoroutineScope(Dispatchers.IO).launch {
-            val superHeroeDetail=provideGetRetrofit().create(BugsApiService::class.java).getSuperHeroeDetail(id)
 
-            superHeroeDetail.enqueue(object : Callback<MealDetailResponse>{
+    private fun getMealInformation(id: String) {
+        CoroutineScope(Dispatchers.IO).launch {
+            val mealDetail=provideGetRetrofit().create(MealsApiService::class.java).getMealsDetail(id)
+
+            mealDetail.enqueue(object : Callback<MealDetailResponse>{
                 override fun onResponse(
                     call: Call<MealDetailResponse>,
                     response: Response<MealDetailResponse>
@@ -67,6 +66,7 @@ class Details : AppCompatActivity() {
         }
     }
 
+
     private fun createUI(MealDetailResponse: MealDetailResponse) {
         Picasso.get().load(MealDetailResponse.meals[0].image).into(binding.ivDetails)
         binding.tvFullName.text=MealDetailResponse.meals[0].ingrediente1
@@ -78,7 +78,7 @@ class Details : AppCompatActivity() {
         binding.tvIngr6.text=MealDetailResponse.meals[0].ingrediente7
         binding.tvIngr7.text=MealDetailResponse.meals[0].ingrediente8
         binding.tvIngr8.text=MealDetailResponse.meals[0].ingrediente9
-        binding.tvP.text=MealDetailResponse.meals[0].principal
+
 
     }
 }

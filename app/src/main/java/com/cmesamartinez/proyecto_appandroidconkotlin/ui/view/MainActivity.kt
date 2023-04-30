@@ -4,13 +4,16 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.activity.viewModels
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cmesamartinez.proyecto_appandroidconkotlin.data.model.MealDataResponse
-import com.cmesamartinez.proyecto_appandroidconkotlin.data.network.BugsApiService
+import com.cmesamartinez.proyecto_appandroidconkotlin.data.network.MealsApiService
 import com.cmesamartinez.proyecto_appandroidconkotlin.databinding.ActivityMainBinding
 import com.cmesamartinez.proyecto_appandroidconkotlin.ui.view.Details.Companion.EXTRA_ID
+import com.cmesamartinez.proyecto_appandroidconkotlin.ui.viewModel.MealViewModel
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -20,10 +23,12 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class MainActivity : AppCompatActivity() {
+@AndroidEntryPoint
+class MainActivity : AppCompatActivity () {
     private lateinit var binding: ActivityMainBinding
     private lateinit var retrofit: Retrofit
-    private lateinit var adapter: BugAdapter
+    private lateinit var adapter: MealAdapter
+    private val mealVM: MealViewModel by viewModels()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,17 +38,7 @@ class MainActivity : AppCompatActivity() {
         retrofit=provideGetRetrofit()
         initUI()
     }
-    /**
-    fun provideGetRetrofit():Retrofit{
-        return Retrofit
-            .Builder()
-            .baseUrl("https://superheroapi.com/")
-            .addConverterFactory(
-                GsonConverterFactory
-                .create())
-            .build()
-    }
-    **/
+
     fun provideGetRetrofit():Retrofit{
         return Retrofit
             .Builder()
@@ -53,10 +48,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initUI() {
-        binding.searchBugs.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
+        binding.searchMeals.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
             android.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                searchByName(query.orEmpty())
+                if (query != null) {
+                    mealVM.getMealList(query)
+                }
+                //searchByName(query.orEmpty())
                 return false
             }
 
@@ -64,11 +62,34 @@ class MainActivity : AppCompatActivity() {
 
 
         })
+        mealVM.mealslist.observe(this){ results->
+            results.enqueue(object:Callback<MealDataResponse>{
+                override fun onResponse(
+                    call: Call<MealDataResponse>,
+                    response: Response<MealDataResponse>
+                ) {
+                    if(response.isSuccessful){
+                        val response= response.body()
+                        if (response!=null){
+                            runOnUiThread {
+                                adapter.updateList(response.meals)
+                            }
 
-        adapter=BugAdapter{id -> detail(id)}
-        binding.rvBugs.setHasFixedSize(true)
-        binding.rvBugs.layoutManager=LinearLayoutManager(this)
-        binding.rvBugs.adapter=adapter
+                        }
+
+                    }
+                }
+
+                override fun onFailure(call: Call<MealDataResponse>, t: Throwable) {
+                }
+
+            })
+
+        }
+        adapter=MealAdapter{ id -> detail(id)}
+        binding.rvMeals.setHasFixedSize(true)
+        binding.rvMeals.layoutManager=LinearLayoutManager(this)
+        binding.rvMeals.adapter=adapter
 
 
     }
@@ -84,7 +105,7 @@ class MainActivity : AppCompatActivity() {
         binding.prBar.isVisible=true
         CoroutineScope(Dispatchers.IO).launch {
 
-            val myResult= provideGetRetrofit().create(BugsApiService::class.java).getSuperHeroes(query)
+            val myResult= provideGetRetrofit().create(MealsApiService::class.java).getMeals(query)
             myResult.enqueue(object:Callback<MealDataResponse>{
                 override fun onResponse(
                     call: Call<MealDataResponse>,

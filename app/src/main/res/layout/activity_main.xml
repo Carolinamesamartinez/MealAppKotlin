@@ -8,21 +8,39 @@
     tools:context=".ui.view.MainActivity">
 
     <SearchView
-        android:id="@+id/search_Bugs"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:id="@+id/search_Meals"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
+        android:backgroundTint="#C47D6A"
+        app:iconifiedByDefault="false"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.071"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:iconifiedByDefault="false"/>
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageButton
+        android:id="@+id/ibFavoriteMeal"
+        android:layout_width="60dp"
+        android:layout_height="50dp"
+        android:background="@color/background_app"
+        android:src="@drawable/ic_foodicon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.92"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"></ImageButton>
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvBugs"
+        android:id="@+id/rvMeals"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/search_Bugs"
+        app:layout_constraintTop_toBottomOf="@id/search_Meals"
         app:layout_constraintEnd_toEndOf="parent">
     </androidx.recyclerview.widget.RecyclerView>
 
@@ -36,4 +54,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
     </ProgressBar>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_marginBottom="577dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"></LinearLayout>
+    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
