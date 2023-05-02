@@ -1,5 +1,6 @@
 package com.cmesamartinez.proyecto_appandroidconkotlin.data.model
 
+import com.cmesamartinez.proyecto_appandroidconkotlin.data.database.entities.dao.MealEntity
 import com.google.gson.annotations.SerializedName
 import dagger.Provides
 import javax.inject.Singleton
@@ -15,4 +16,7 @@ data class MealsItemResponse(
     @SerializedName("strArea") val area:String,
     @SerializedName("strMealThumb") val mealImage:String
 )
+
+
+
 

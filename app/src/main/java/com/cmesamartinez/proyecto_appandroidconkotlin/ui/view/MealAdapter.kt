@@ -4,8 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.cmesamartinez.proyecto_appandroidconkotlin.R
+import com.cmesamartinez.proyecto_appandroidconkotlin.data.model.MealDataResponse
 import com.cmesamartinez.proyecto_appandroidconkotlin.data.model.MealsItemResponse
-import javax.inject.Inject
 
 class MealAdapter (var MealList: List<MealsItemResponse> = emptyList(), private val onItemSelected:(String)->Unit):RecyclerView.Adapter<MealViewHolder>() {
 
@@ -22,6 +22,6 @@ class MealAdapter (var MealList: List<MealsItemResponse> = emptyList(), private 
     override fun getItemCount(): Int = MealList.size
 
     override fun onBindViewHolder(holder: MealViewHolder, position: Int) {
-        holder.bind(MealList[position],onItemSelected)
+        holder.bind(MealList.get(position),onItemSelected)
     }
 }

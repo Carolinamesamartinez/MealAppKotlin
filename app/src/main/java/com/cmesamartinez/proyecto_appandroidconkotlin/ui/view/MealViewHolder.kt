@@ -2,6 +2,7 @@ package com.cmesamartinez.proyecto_appandroidconkotlin.ui.view
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import com.cmesamartinez.proyecto_appandroidconkotlin.data.model.MealDataResponse
 import com.cmesamartinez.proyecto_appandroidconkotlin.data.model.MealsItemResponse
 import com.cmesamartinez.proyecto_appandroidconkotlin.databinding.ItemMealBinding
 import com.squareup.picasso.Picasso

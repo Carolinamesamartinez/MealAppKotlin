@@ -3,12 +3,9 @@ package com.cmesamartinez.proyecto_appandroidconkotlin.ui.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.widget.SearchView
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.cmesamartinez.proyecto_appandroidconkotlin.data.model.MealDataResponse
 import com.cmesamartinez.proyecto_appandroidconkotlin.data.network.MealsApiService
 import com.cmesamartinez.proyecto_appandroidconkotlin.databinding.ActivityMainBinding
 import com.cmesamartinez.proyecto_appandroidconkotlin.ui.view.Details.Companion.EXTRA_ID
@@ -48,12 +45,16 @@ class MainActivity : AppCompatActivity () {
     }
 
     private fun initUI() {
+        /**
+        binding.ibFavoriteMeal.setOnClickListener {
+            FavoriteMeal()
+        }
+        **/
         binding.searchMeals.setOnQueryTextListener(object : SearchView.OnQueryTextListener,
             android.widget.SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                if (query != null) {
+            override fun onQueryTextSubmit(query: String): Boolean {
                     mealVM.getMealList(query)
-                }
+
                 //searchByName(query.orEmpty())
                 return false
             }
@@ -62,28 +63,11 @@ class MainActivity : AppCompatActivity () {
 
 
         })
-        mealVM.mealslist.observe(this){ results->
-            results.enqueue(object:Callback<MealDataResponse>{
-                override fun onResponse(
-                    call: Call<MealDataResponse>,
-                    response: Response<MealDataResponse>
-                ) {
-                    if(response.isSuccessful){
-                        val response= response.body()
-                        if (response!=null){
-                            runOnUiThread {
-                                adapter.updateList(response.meals)
-                            }
 
-                        }
-
-                    }
-                }
-
-                override fun onFailure(call: Call<MealDataResponse>, t: Throwable) {
-                }
-
-            })
+        mealVM.mealslist.observe(this){
+            if (it != null) {
+                adapter.updateList(it)
+            }
 
         }
         adapter=MealAdapter{ id -> detail(id)}
@@ -99,8 +83,12 @@ class MainActivity : AppCompatActivity () {
         intent.putExtra(EXTRA_ID,id)
         startActivity(intent)
     }
+    private fun favorites(id: String) {
+        val intent= Intent(this,FavoriteMeal::class.java)
+        startActivity(intent)
+    }
 
-
+/**
     private fun searchByName(query: String) {
         binding.prBar.isVisible=true
         CoroutineScope(Dispatchers.IO).launch {
@@ -134,4 +122,5 @@ class MainActivity : AppCompatActivity () {
         }
 
     }
+    **/
 }
