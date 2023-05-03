@@ -1,6 +1,7 @@
 package com.cmesamartinez.proyecto_appandroidconkotlin.data
 
 import androidx.lifecycle.Transformations.map
+import com.cmesamartinez.proyecto_appandroidconkotlin.data.database.entities.dao.MealDao
 import com.cmesamartinez.proyecto_appandroidconkotlin.data.database.entities.dao.MealDatabase
 import com.cmesamartinez.proyecto_appandroidconkotlin.data.database.entities.dao.MealEntity
 import com.cmesamartinez.proyecto_appandroidconkotlin.data.model.MealDataResponse
@@ -15,40 +16,29 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import javax.inject.Inject
 
-class MealRepo  {
+class MealRepo @Inject constructor(
+    private val apiMeal : MealService, private val mealDao: MealDao)  {
 
-    private val apiMeal = MealService()
      suspend fun getMealItems(query:String):MealDataResponse? {
         val result= apiMeal.getMealsServ(query)
        return result
     }
 
-    /**
-    fun getMealFavorites(): Call<MealEntity> {
-      return mealDatabase.getMealDao().getAllFavoriesDrinks()
 
-
+    suspend fun getMealFavorites(): List<MealEntity> {
+      return mealDao.getAllFavoritesDrinks()
 
     }
 
-**/
-    fun convertMealEntityToMeal(mealEntity: MealEntity): MealsItemResponse {
-        return MealsItemResponse(
-            mealEntity.id,
-            mealEntity.name,
-            mealEntity.imageMeal,
-            mealEntity.category,
-            mealEntity.area
-        )
+
+
+
+
+
+    suspend fun insertMealFavorites(meal:MealEntity){
+        mealDao.insertFavorite(meal)
     }
 
-
-
-    /**
-    fun insertMealFavorites(meal:MealEntity){
-        mealDatabase.getMealDao().insertFavorite(meal)
-    }
-**/
 
 
 

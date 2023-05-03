@@ -17,6 +17,8 @@ data class MealsItemResponse(
     @SerializedName("strMealThumb") val mealImage:String
 )
 
+ fun MealEntity.toDomain()=MealsItemResponse(id,name,category,area,imageMeal)
+
 
 
 

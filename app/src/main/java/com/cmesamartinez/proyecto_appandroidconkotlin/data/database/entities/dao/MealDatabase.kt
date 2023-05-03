@@ -9,22 +9,4 @@ import androidx.room.RoomDatabase
 abstract class MealDatabase: RoomDatabase() {
     abstract fun getMealDao(): MealDao
 
-
-    companion object {
-        private var INSTANCE: MealDatabase? = null
-        fun getDatabase(context: Context): MealDatabase {
-            INSTANCE = INSTANCE ?: Room.databaseBuilder(
-                context.applicationContext,
-                MealDatabase::class.java,
-                "mealsfavorite_table"
-            ).build()
-            return INSTANCE!!
-        }
-
-        fun destroyInstance() {
-            INSTANCE = null
-        }
-        //Instance type room of Mealdatbase for not duplicate content
-
-    }
 }

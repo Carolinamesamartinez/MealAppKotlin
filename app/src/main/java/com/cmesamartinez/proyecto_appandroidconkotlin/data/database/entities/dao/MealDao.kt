@@ -9,11 +9,10 @@ import retrofit2.Call
 
 @Dao
 interface MealDao {
-/**
     @Query("SELECT * FROM mealsfavorite_table")
-     fun getAllFavoriesDrinks(): Call<MealEntity>
+     suspend fun getAllFavoritesDrinks(): List<MealEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-     fun insertFavorite(meal:MealEntity)
-**/
+    suspend fun insertFavorite(meal:MealEntity)
+
 }

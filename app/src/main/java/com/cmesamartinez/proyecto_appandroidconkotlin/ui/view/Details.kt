@@ -2,18 +2,23 @@ package com.cmesamartinez.proyecto_appandroidconkotlin.ui.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
+import com.cmesamartinez.proyecto_appandroidconkotlin.data.database.entities.dao.MealEntity
 import com.cmesamartinez.proyecto_appandroidconkotlin.data.model.MealDetailResponse
 import com.cmesamartinez.proyecto_appandroidconkotlin.data.network.MealsApiService
 import com.cmesamartinez.proyecto_appandroidconkotlin.databinding.ActivityDetailsBinding
 import com.cmesamartinez.proyecto_appandroidconkotlin.ui.viewModel.MealViewModel
 import com.squareup.picasso.Picasso
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+@AndroidEntryPoint
 class Details : AppCompatActivity () {
     private lateinit var binding: ActivityDetailsBinding
     private lateinit var malapi:MealsApiService
@@ -64,13 +69,16 @@ class Details : AppCompatActivity () {
         binding.tvIngr7.text=item.meals [0].ingrediente8
         binding.tvIngr8.text=item.meals [0].ingrediente9
 
-        /**
-        binding.ibFavoriteMeal.setOnClickListener {
-        mealVM.guardarMeal(MealEntity(MealDetailResponse.meals[0].mealid,MealDetailResponse.meals[0].name,MealDetailResponse.meals[0].image,MealDetailResponse.meals[0].category,MealDetailResponse.meals[0].area))
-        Toast.makeText(this,"Añadido recetas favoritas",Toast.LENGTH_SHORT).show()
+        CoroutineScope(Dispatchers.IO).launch{
+            binding.ibFavoriteMeal.setOnClickListener {
+                mealVM.guardarMeal(MealEntity(item.meals[0].mealid,item.meals[0].name,item.meals[0].image,item.meals[0].category,item.meals[0].area))
+                val context = binding.root.context
+                Toast.makeText(context,"Añadido recetas favoritas",Toast.LENGTH_SHORT).show()
+            }
         }
 
-         **/
+
+
 
     }
 }

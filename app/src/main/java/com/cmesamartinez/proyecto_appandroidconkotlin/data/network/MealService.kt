@@ -11,9 +11,10 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
+import javax.inject.Inject
 
-class MealService {
-    private val apimeal = provideGetRetrofit().create(MealsApiService::class.java)
+class MealService @Inject constructor(private val apimeal: MealsApiService){
+    //private val apimeal = provideGetRetrofit().create(MealsApiService::class.java)
 
     suspend fun getMealsServ(query: String): MealDataResponse? {
         return withContext(Dispatchers.IO) {
