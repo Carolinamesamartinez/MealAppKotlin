@@ -1,6 +1,7 @@
 package com.cmesamartinez.proyecto_appandroidconkotlin.data.database.entities.dao
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
@@ -14,5 +15,9 @@ interface MealDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertFavorite(meal:MealEntity)
+
+    @Delete
+    suspend fun deleteMeal(meal:MealEntity)
+
 
 }

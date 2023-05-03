@@ -31,7 +31,9 @@ class MealRepo @Inject constructor(
     }
 
 
-
+    suspend fun deleteMealFavorites(meal:MealEntity){
+        mealDao.deleteMeal(meal)
+    }
 
 
 

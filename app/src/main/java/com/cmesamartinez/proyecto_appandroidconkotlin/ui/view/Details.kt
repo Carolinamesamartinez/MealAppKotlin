@@ -75,6 +75,12 @@ class Details : AppCompatActivity () {
                 val context = binding.root.context
                 Toast.makeText(context,"Añadido recetas favoritas",Toast.LENGTH_SHORT).show()
             }
+
+            binding.ibDeleteFavoriteMeal.setOnClickListener {
+                mealVM.deleteMeal(MealEntity(item.meals[0].mealid,item.meals[0].name,item.meals[0].image,item.meals[0].category,item.meals[0].area))
+                val context = binding.root.context
+                    Toast.makeText(context,"Eliminado de recetas favoritas",Toast.LENGTH_SHORT).show()
+            }
         }
 
 

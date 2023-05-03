@@ -19,7 +19,7 @@ import retrofit2.Response
 @AndroidEntryPoint
 class FavoriteMeal : AppCompatActivity() {
     private val mealVM: MealViewModel by viewModels()
-    private lateinit var adapter: MealAdapter
+    private lateinit var adapter: FavoriteAdapter
     private lateinit var binding: ActivityFavoriteMealBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,12 +35,12 @@ class FavoriteMeal : AppCompatActivity() {
        // Log.i("fav",  meallistdatbase.toString())
 
         mealVM.meallistEntity.observe(this) { ob ->
-            adapter.updateList(ob)
+            adapter.updateFavoriteList(ob)
            // val meallistdatbase= mealVM.getMealFavorites()
            // val list=meallistdatbase.toString().map { MealsItemResponse() }
         }
 
-        adapter=MealAdapter{id -> detail(id)}
+        adapter=FavoriteAdapter()
         binding.rvFavorites.setHasFixedSize(true)
         binding.rvFavorites.layoutManager= LinearLayoutManager(this)
         binding.rvFavorites.adapter=adapter

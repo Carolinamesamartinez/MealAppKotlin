@@ -71,5 +71,12 @@ class MealViewModel @Inject constructor(private val searchByNameUseCase: SearchB
     }
 
 
+    fun deleteMeal(meal:MealEntity){
+        viewModelScope.launch {
+            repo.deleteMealFavorites(meal)
+        }
+    }
+
+
     }
 

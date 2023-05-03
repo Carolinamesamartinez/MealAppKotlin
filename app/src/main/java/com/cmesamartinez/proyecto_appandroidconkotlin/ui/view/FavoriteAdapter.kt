@@ -4,11 +4,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.cmesamartinez.proyecto_appandroidconkotlin.R
+import com.cmesamartinez.proyecto_appandroidconkotlin.data.model.MealsItemResponse
 
-class FavoriteAdapter(var mealFavoriteList: List<String> = emptyList()): RecyclerView.Adapter<FavoriteViewHolder>() {
+class FavoriteAdapter(var mealFavoriteList: List<MealsItemResponse> = emptyList()): RecyclerView.Adapter<FavoriteViewHolder>() {
 
 
-    fun updateFavoriteList(mealFavoriteList: List<String>){
+    fun updateFavoriteList(mealFavoriteList: List<MealsItemResponse>){
         this.mealFavoriteList=mealFavoriteList
         notifyDataSetChanged()
     }
