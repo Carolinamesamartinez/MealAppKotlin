@@ -9,6 +9,9 @@ import com.cmesamartinez.proyecto_appandroidconkotlin.data.database.entities.dao
 import com.cmesamartinez.proyecto_appandroidconkotlin.data.model.MealDataResponse
 import com.cmesamartinez.proyecto_appandroidconkotlin.data.model.MealsItemResponse
 import com.cmesamartinez.proyecto_appandroidconkotlin.data.model.toDomain
+import com.cmesamartinez.proyecto_appandroidconkotlin.domain.DeleteMealUseCase
+import com.cmesamartinez.proyecto_appandroidconkotlin.domain.GetFavoritesUseCase
+import com.cmesamartinez.proyecto_appandroidconkotlin.domain.SaveMealUseCase
 import com.cmesamartinez.proyecto_appandroidconkotlin.domain.SearchByNameUseCase
 import com.cmesamartinez.proyecto_appandroidconkotlin.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -18,7 +21,7 @@ import retrofit2.Call
 import javax.inject.Inject
 
 @HiltViewModel
-class MealViewModel @Inject constructor(private val searchByNameUseCase: SearchByNameUseCase,private val repo:MealRepo): ViewModel() {
+class MealViewModel @Inject constructor(private val deleteMealUseCase: DeleteMealUseCase,private val searchByNameUseCase: SearchByNameUseCase,private val repo:MealRepo,private val getFavoritesUseCase: GetFavoritesUseCase,private val saveMealUseCase: SaveMealUseCase): ViewModel() {
 
     val mealslist=MutableLiveData<List<MealsItemResponse>?>()
     //meallist es una lista de mealitemresponse-> [{idmeal,nombremeal},{idmeal,nombremeal}] pero necesitamos
@@ -57,14 +60,14 @@ class MealViewModel @Inject constructor(private val searchByNameUseCase: SearchB
 
     fun guardarMeal(meal:MealEntity){
         viewModelScope.launch {
-            repo.insertMealFavorites(meal)
+            saveMealUseCase.invoke(meal)
         }
     }
 
 
       fun getMealFavorites(){
           viewModelScope.launch {
-            val mealent=repo.getMealFavorites()
+            val mealent=getFavoritesUseCase.invoke()
               meallistEntity.postValue(mealent.map {it.toDomain()})
            }
 
@@ -73,7 +76,7 @@ class MealViewModel @Inject constructor(private val searchByNameUseCase: SearchB
 
     fun deleteMeal(meal:MealEntity){
         viewModelScope.launch {
-            repo.deleteMealFavorites(meal)
+            deleteMealUseCase.invoke(meal)
         }
     }
 
