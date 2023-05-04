@@ -11,6 +11,7 @@ import com.cmesamartinez.proyecto_appandroidconkotlin.databinding.ActivityMainBi
 import com.cmesamartinez.proyecto_appandroidconkotlin.di.NetworkModule.provideGetRetrofit
 import com.cmesamartinez.proyecto_appandroidconkotlin.ui.view.Details.Companion.EXTRA_ID
 import com.cmesamartinez.proyecto_appandroidconkotlin.ui.viewModel.MealViewModel
+import com.google.firebase.analytics.FirebaseAnalytics
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -20,7 +21,9 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-
+enum class ProviderType{
+    BASIC
+}
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity () {
     private lateinit var binding: ActivityMainBinding
@@ -35,6 +38,8 @@ class MainActivity : AppCompatActivity () {
         setContentView(binding.root)
         retrofit=provideGetRetrofit()
         initUI()
+
+
     }
 
 

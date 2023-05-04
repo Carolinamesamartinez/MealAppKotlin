@@ -1,6 +1,7 @@
 package com.cmesamartinez.proyecto_appandroidconkotlin.data.network
 
 import android.util.Log
+import android.widget.Toast
 import com.cmesamartinez.proyecto_appandroidconkotlin.data.model.MealDataResponse
 import com.cmesamartinez.proyecto_appandroidconkotlin.data.model.MealsItemResponse
 import com.cmesamartinez.proyecto_appandroidconkotlin.di.NetworkModule
@@ -28,7 +29,6 @@ class MealService @Inject constructor(private val apimeal: MealsApiService){
 
             } else {
                 Log.i("carol2","no funciona")
-
                 null
             }
         }

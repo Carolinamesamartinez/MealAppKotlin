@@ -33,6 +33,8 @@ class FavoriteMeal : AppCompatActivity() {
        // val list=meallistdatbase.toString().map { MealsItemResponse() }
 
        // Log.i("fav",  meallistdatbase.toString())
+         //val meallistdatbase= mealVM.getMealFavorites()
+         //Log.i("fav",  meallistdatbase.toString())
 
         mealVM.meallistEntity.observe(this) { ob ->
             adapter.updateFavoriteList(ob)

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "858121448623",
+    "project_id": "proyectoappandroidconkotlin",
+    "storage_bucket": "proyectoappandroidconkotlin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:858121448623:android:483d5cbfcafa20b854385a",
+        "android_client_info": {
+          "package_name": "com.cmesamartinez.proyecto_appandroidconkotlin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "858121448623-jr4koekf069bluukaf58lefsit19kvr4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTGNHt0p4IwwMO5XWDSzuMHaUc1Mz4w4c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "858121448623-jr4koekf069bluukaf58lefsit19kvr4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
