@@ -20,7 +20,7 @@
         app:srcCompat="@drawable/ic_foodicon" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/linearLayoutCompat"
+        android:id="@+id/authLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
@@ -30,6 +30,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.588">
+
 
         <EditText
             android:id="@+id/etEmail"
@@ -47,7 +48,9 @@
         <EditText
             android:id="@+id/etPassword"
             android:layout_width="match_parent"
+            android:ems="10"
             android:layout_height="wrap_content"
+            android:inputType="textPassword"
             android:hint="Password">
 
         </EditText>
@@ -85,6 +88,20 @@
 
             </Button>
         </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <Space
+            android:layout_width="54dp"
+            android:layout_height="64dp" />
+
+        <Button
+            android:id="@+id/btn_google"
+            style="@style/FavoriteButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableStart="@drawable/ic_foodicon"
+            android:padding="16dp"
+            android:text="Google"
+            android:textAlignment="textStart" />
 
 
     </androidx.appcompat.widget.LinearLayoutCompat>

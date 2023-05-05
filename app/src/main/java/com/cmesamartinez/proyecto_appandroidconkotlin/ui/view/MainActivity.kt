@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.widget.SearchView
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cmesamartinez.proyecto_appandroidconkotlin.data.network.MealsApiService
 import com.cmesamartinez.proyecto_appandroidconkotlin.databinding.ActivityMainBinding
@@ -22,7 +23,8 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 enum class ProviderType{
-    BASIC
+    BASIC,
+    GOOGLE
 }
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity () {
@@ -62,6 +64,7 @@ class MainActivity : AppCompatActivity () {
 
 
         })
+        mealVM.isloading.observe(this) { binding.prBar.isVisible = it }
 
         mealVM.mealslist.observe(this){
             if (it != null) {

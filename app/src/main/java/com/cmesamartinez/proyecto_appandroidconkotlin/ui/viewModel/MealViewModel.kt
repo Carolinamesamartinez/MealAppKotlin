@@ -31,15 +31,20 @@ class MealViewModel @Inject constructor(private val deleteMealUseCase: DeleteMea
     //entonces le dedimos que el meallist el valor es un conjunto de mealitemresponse
     val meallistEntity= MutableLiveData<List<MealsItemResponse>>()
 
+    val isloading= MutableLiveData<Boolean>()
+
 
      fun getMealList(query:String){
 
                 viewModelScope.launch {
+                    isloading.postValue(true)
                     val meal=searchByNameUseCase.invoke(query)
                     if (meal != null) {
                         //meal {} . lalista de los mealitemresponse correspondientes []
                         mealslist.postValue(meal.meals)
+
                     }
+                    isloading.postValue(false)
 
 
                 }
