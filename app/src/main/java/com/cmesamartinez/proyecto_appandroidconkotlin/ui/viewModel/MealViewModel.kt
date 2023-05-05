@@ -1,5 +1,6 @@
 package com.cmesamartinez.proyecto_appandroidconkotlin.ui.viewModel
 
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
@@ -9,11 +10,9 @@ import com.cmesamartinez.proyecto_appandroidconkotlin.data.database.entities.dao
 import com.cmesamartinez.proyecto_appandroidconkotlin.data.model.MealDataResponse
 import com.cmesamartinez.proyecto_appandroidconkotlin.data.model.MealsItemResponse
 import com.cmesamartinez.proyecto_appandroidconkotlin.data.model.toDomain
-import com.cmesamartinez.proyecto_appandroidconkotlin.domain.DeleteMealUseCase
-import com.cmesamartinez.proyecto_appandroidconkotlin.domain.GetFavoritesUseCase
-import com.cmesamartinez.proyecto_appandroidconkotlin.domain.SaveMealUseCase
-import com.cmesamartinez.proyecto_appandroidconkotlin.domain.SearchByNameUseCase
+import com.cmesamartinez.proyecto_appandroidconkotlin.domain.*
 import com.cmesamartinez.proyecto_appandroidconkotlin.util.Resource
+import com.google.android.play.core.integrity.p
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -81,9 +80,15 @@ class MealViewModel @Inject constructor(private val deleteMealUseCase: DeleteMea
 
     fun deleteMeal(meal:MealEntity){
         viewModelScope.launch {
-            deleteMealUseCase.invoke(meal)
+
+                deleteMealUseCase.invoke(meal)
+
+
         }
     }
+
+
+
 
 
     }

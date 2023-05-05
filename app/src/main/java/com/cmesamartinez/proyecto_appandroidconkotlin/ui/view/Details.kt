@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
+import com.cmesamartinez.proyecto_appandroidconkotlin.data.MealRepo
+import com.cmesamartinez.proyecto_appandroidconkotlin.data.database.entities.dao.MealDao
 import com.cmesamartinez.proyecto_appandroidconkotlin.data.database.entities.dao.MealEntity
 import com.cmesamartinez.proyecto_appandroidconkotlin.data.model.MealDetailResponse
 import com.cmesamartinez.proyecto_appandroidconkotlin.data.network.MealsApiService
@@ -73,13 +75,14 @@ class Details : AppCompatActivity () {
             binding.ibFavoriteMeal.setOnClickListener {
                 mealVM.guardarMeal(MealEntity(item.meals[0].mealid,item.meals[0].name,item.meals[0].image,item.meals[0].category,item.meals[0].area))
                 val context = binding.root.context
-                Toast.makeText(context,"Añadido recetas favoritas",Toast.LENGTH_SHORT).show()
+                Toast.makeText(context,"Like  it :)",Toast.LENGTH_SHORT).show()
             }
 
             binding.ibDeleteFavoriteMeal.setOnClickListener {
                 mealVM.deleteMeal(MealEntity(item.meals[0].mealid,item.meals[0].name,item.meals[0].image,item.meals[0].category,item.meals[0].area))
                 val context = binding.root.context
-                    Toast.makeText(context,"Eliminado de recetas favoritas",Toast.LENGTH_SHORT).show()
+                Toast.makeText(context,"Hate it :(",Toast.LENGTH_SHORT).show()
+
             }
         }
 

@@ -19,5 +19,4 @@ interface MealDao {
     @Delete
     suspend fun deleteMeal(meal:MealEntity)
 
-
 }

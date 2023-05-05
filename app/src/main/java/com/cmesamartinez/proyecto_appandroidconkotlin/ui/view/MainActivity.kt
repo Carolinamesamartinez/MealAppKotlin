@@ -3,6 +3,7 @@ package com.cmesamartinez.proyecto_appandroidconkotlin.ui.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
@@ -69,6 +70,9 @@ class MainActivity : AppCompatActivity () {
         mealVM.mealslist.observe(this){
             if (it != null) {
                 adapter.updateList(it)
+            }else{
+                Toast.makeText(this,"No Meals with that name", Toast.LENGTH_SHORT).show()
+
             }
 
         }
