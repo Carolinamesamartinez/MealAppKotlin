@@ -93,16 +93,6 @@
             android:layout_width="54dp"
             android:layout_height="64dp" />
 
-        <Button
-            android:id="@+id/btn_google"
-            style="@style/FavoriteButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_foodicon"
-            android:padding="16dp"
-            android:text="Google"
-            android:textAlignment="textStart" />
-
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
